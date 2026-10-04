@@ -1,0 +1,18 @@
+# Build outputs
+*.exe
+*.obj
+*.lib
+*.pdb
+*.ilk
+*.exp
+*.pch
+
+# Tasker recording/log output
+*.log
+*.dat
+*.csv
+*.tsv
+
+# Temporary diagnostics and downloaded manuals
+/work/
+/outputs/
