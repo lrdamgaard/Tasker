@@ -1,0 +1,41 @@
+MICOS MoCo command reference
+
+Status
+------
+This is a verified protocol note, not yet a complete command catalog. The linked MICOS command manual is required to document the actual command names, parameters, replies, and motion behavior. Do not send the template below to a controller; it is not a runnable command.
+
+Controller family
+-----------------
+The Tasker interface was requested for a MICOS MoCo motor controller. MICOS lists MoCo DC and MoCo Stick variants. This note concerns the MoCo DC product information; confirm the exact model on the controller label before using model-specific commands. The command set may differ between variants and firmware versions.
+
+Verified command-language information
+-------------------------------------
+- MoCo DC has an onboard command language with more than 50 commands.
+- The PI miCos catalog describes the command format as ASCII two-letter mnemonics.
+- The catalog describes an RS-232 computer interface. Published baud-rate information differs: the MICOS product page lists 34,400 baud, while the PI miCos catalog lists up to 38.4 kbaud. Check the manual for the specific controller before selecting a rate.
+
+Syntax shape only (not a complete syntax definition)
+----------------------------------------------------
+    <two-letter ASCII mnemonic> [parameters]
+
+The mnemonic, whether parameters are required, parameter order, separators, and reply format must be taken from the controller's manual. No individual command examples are included here because their MoCo DC syntax could not be verified from the accessible source text.
+
+Tasker v1.3 serial transport
+----------------------------
+- Select the controller's COM port and a baud rate supported by that unit.
+- Tasker sends the entered printable ASCII text followed by a carriage return (CR, 0x0D).
+- Tasker displays the received serial response in the Profiling tab.
+- Connecting does not send a command automatically.
+
+Verify the line ending, baud rate, parity, stop bits, and command syntax against the manual for the exact controller and firmware before operating it. Some commands can move or reconfigure the motor.
+
+Sources
+-------
+MICOS MoCo DC product page:
+https://www.micosusa.com/old/Con_5044.html
+
+PI miCos Motion Control catalog (MoCo DC section):
+https://www.pi-usa.us/fileadmin/user_upload/pi_us/files/catalogs/Motion_Control_Catalog_PI_miCos.pdf
+
+MICOS MoCo DC manual download linked from the product page:
+https://www.micosusa.com/old/download/manual/MocoManual_V310.zip
