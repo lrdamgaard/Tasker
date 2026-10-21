@@ -1,0 +1,18 @@
+﻿Command / sequence	Input parameters	Short description
+Address select: 0x01 <addr>	<addr> = one ASCII hex digit, 0–9 or A–F; no CR	Selects the MoCo board address when Tasker connects. Tasker sends byte 0x01 followed by the address character.
+Position query: '	None; no CR	Requests the controller's actual position without interrupting motion. Reply contains the encoder position (for example, P0:<increments>); Tasker displays it in microns using the configured increments-per-micron scale.
+MR<distance>	<distance> = signed integer encoder increments; CR appended	Relative move. Tasker's Manual control step buttons convert the entered microns using the configured encoder scale, then send MR with a positive or negative increment count.
+MA<position>	<position> = signed integer absolute encoder increments; CR appended	Absolute move used by Go and stepped scans. Tasker converts the software target in microns to the corresponding MoCo encoder position using its configured scale and software offset.
+AB	None; CR appended	Abort motion. Tasker sends this if the user closes the app while a stepped scan is active.
+Manual command field: <command>	Any command entered by the user; printable ASCII; Tasker appends CR (0x0D)	Sends a user-entered MoCo command and displays the controller reply. Syntax and effects depend on the command; consult the MoCo DC manual before sending.
+
+Transport	Value
+Serial baud default	9600 baud (selectable in Tasker)
+Standard command terminator	CR (0x0D); not added to address selection or the one-character position query
+Move units	MR uses encoder increments, not microns or millimeters
+
+Limit-switch integration in Tasker v1.76
+LN	None; CR appended	Enable the controller's software limit-switch handling on connection; does not change switch polarity or hardware jumpers.
+%	None; no CR	Read status during motion. Parse S0 bytes 4 and 5 for enables and reverse/forward switch inputs.
+! followed by AB0	None; ! has no CR, AB0 has CR	Stop motor motion when a limit is activated in the commanded direction; abort an affected profiling sequence.
+Travel limits	Reverse and forward positions in the selected Depth unit	Tasker setting, not a MoCo command. Converted to raw encoder coordinates; Start/Resume checks current position, scan targets, overshoot, reverse overshoot, and Safe. Confirm after each connection.

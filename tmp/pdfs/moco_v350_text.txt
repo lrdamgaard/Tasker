@@ -1,0 +1,2483 @@
+
+=== PDF PAGE 1 ===
+Rev 3.5  2012-02-07 
+PI miCos 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+=== PDF PAGE 2 ===
+ 
+MoCo-Series 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Motion made easy 
+User Manual for MoCo Controllers  
+ PI miCos GmbH 
+Freiburger Straße 30 • 79427 Eschbach/Germany 
+Tel +49-7634-5057-0 • Fax +49-7634-5057-0 
+Mail  info@pimicos.com 
+ 
+=== PDF PAGE 3 ===
+ 
+ 
+ 
+ 
+MOCO series 
+ 
+Contents 
+Key features of MoCo DC external .............. 5 
+Front View........................................................ 6 
+Rear View ........................................................ 6 
+Connectors ...................................................... 7 
+X 1: Motor, Encoder & Limit ...................... 7 
+Interface :..................................................... 7  
+X3: RS-232 In.............................................. 8  
+X4: RS-232 Out........................................... 8  
+X5: Power .................................................... 8  
+Status Display ............................................. 9  
+Digital / Analog IO :......................................... 9 
+Digital-Inputs: .............................................. 9  
+Digital-Outputs: ......................................... 10  
+Using the outputs:..................................... 11  
+Outputs to TTL-level:................................ 11 
+ Analog-Output:......................................... 11  
+Analog-Output:.......................................... 12  
+Analog-Input:............................................. 12  
+Jumpers: .................................................... 13  
+Motor-Cable:.............................................. 14  
+Communications ........................................... 15 
+RS-232 Settings........................................ 15  
+Reply-Termination .................................... 15  
+Single Command ...................................... 16  
+Compound Commands............................ 16 
+Macro Commands .................................... 16  
+Sub Commands ........................................ 17  
+Control Characters: .................................. 17 
+Address Selection..................................... 17  
+Limit Switch Operation............................. 18 
+Limit switch enable/disable ..................... 18 
+Command Reference................................... 19 
+Tell Position............................................... 19  
+Tell Target.................................................. 19  
+Tell Status.................................................. 20  
+Move Status .............................................. 21  
+Tell Following Error .................................. 22 
+Tell Board Address................................... 22 
+Define Board Address.............................. 22 
+Update........................................................ 23  
+Define Velocity .......................................... 23  
+Get Velocity ............................................... 23 
+Define Acceleration................................... 24 
+Get Acceleration........................................ 24 
+Define P-Term ........................................... 25 
+Get P-Term ................................................ 25 
+Define I-Term............................................. 25 
+Get I-Term.................................................. 26 
+Define D-Term........................................... 26 
+Get D-Term................................................ 26 
+Define Integral-limit................................... 27 
+Get Integral-Limit ...................................... 27 
+Define Following-Error ............................. 28 
+Define Baud-Rate ..................................... 28 
+Reset Controller ........................................ 28 
+Echo Off ..................................................... 29  
+Echo On ..................................................... 29  
+Motor On .................................................... 29  
+Motor Off .................................................... 30  
+Abort Motion .............................................. 30 
+Move Relative............................................ 31 
+Move Absolute........................................... 31 
+Repeat........................................................ 31  
+Find Edge................................................... 32 
+Find Index .................................................. 32 
+Define Home.............................................. 32 
+Go Home.................................................... 33  
+Wait Stop.................................................... 33  
+Macro Definition ........................................ 33 
+Macro Call.................................................. 34 
+Tell Macro .................................................. 34 
+Reset Macro .............................................. 34 
+Set Analog Output .................................... 35 
+Increment Analog Output......................... 35 
+Tell Analog Output.................................... 35 
+Tell Analog Input ....................................... 36 
+Tell Channel............................................... 36 
+Channel oFf ............................................... 37 
+Channel oN................................................ 37 
+Wait oN....................................................... 37  
+Wait oFf...................................................... 38  
+eXecute if oN............................................. 38 
+eXecute if oFf ............................................ 38 
+Trigger Functions:......................................... 39 
+=== PDF PAGE 4 ===
+ 
+ 
+ 
+ 
+MOCO series 
+ 
+SetBreakpoint port.................................... 39  
+Breakpoint Define..................................... 39  
+define Breakpoint  Increment.................. 40 
+define Pulse Width.................................... 40  
+Trouble Shooting: ......................................... 43 
+Command Short Form ................................. 44 
+Factory Settings :.......................................... 45 
+ 
+=== PDF PAGE 5 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 5 - 
+ 
+Key features of MoCo DC external  
+ 
+• LM629 Servo Controller for simultaneous control of position, velocity and 
+acceleration, with PID filtering.  
+ 
+• LMD18201 Motor Driver (3 A continuous current, 6 A for 200 mSec) 
+ 
+• Non-volatile (permanent) storage of servo parameter setups and user programs. 
+ 
+• On-board control language with over 50 commands. 
+ 
+• Optically isolated, wide voltage range limit switch inputs (2). 
+ 
+• Single-ended or differential encoder inputs, up to 1 MHz, with index capability. 
+ 
+• Position Synchon Trigger Output (since V2.91) 
+ 
+• Limit Switch disable function (since V4.00 and HW Rev 610/611) 
+ 
+ 
+• Up to 16 MoCo controllers may share a single RS-232 channel, with individual 
+addressing. Two paralleled connectors simplify multi-drop cabling. 
+ 
+• Large, two-digit LED for network address and error code display. 
+ 
+ 
+• Operation from a single power supply 12 .. 24 VDC, typically 24 VDC. 
+ 
+• Additional connector for general purpose input/output, fully supported by the 
+integrated command structure. 
+ 
+ 
+• Two analog inputs, 0-5 V, 8 bit resolution 
+ 
+• One analog output, 0-5 V, 8 bit resolution, 2 mA.  
+ 
+• Four optically-isolated inputs.  
+ 
+• Four high-voltage, high-current driver outputs. Separate input for driver voltage 
+supply. 
+=== PDF PAGE 6 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 6 - 
+Front View 
+ 
+ 
+                            
+ 
+Rear View 
+ 
+ 
+ 
+ 
+ 
+
+=== PDF PAGE 7 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 7 - 
+Connectors 
+X 1: Motor, Encoder & Limit    
+ 
+ 
+DB15f  Function DB15f 
+1 A+ A- 9 
+2 B+ B- 10 
+3 C+ C- 11 
+4 Gnd 5 V 12 
+5  Brake-Out 13 
+6 M+ M- 14 
+7 E2 (limit 
+forward) 
+E1 (limit 
+reverse) 
+15 
+8 Limit-
+24VDC 
+  
+ 
+The limit-switch inputs are direction dependent. Limit E1 stops reverse 
+motion, Limit E2 stops positive motion!  
+ 
+ 
+Do not connect or disconnect motor or power 
+leads with power applied! 
+ 
+Interface : 
+The inputs could be configured as pnp or npn  by internal jumper.  
+ 
+Default : pnp  sourcing the input (connect to V+ (5..24VDC) 
+  npn  sinking the input ( connect to Gnd)  
+ 
+ 
+
+=== PDF PAGE 8 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 8 - 
+X2: IO-digital & analog 
+ 
+ 
+DB15f  HD Function HD15f HD 
+1 Analog In 1 Digital Out 3 9 
+2 Analog Out Digital In 3 10 
+3 Out-Supply 
+24 V ext 
+Gnd 11 
+4 Digital Out2 Analog In2 12 
+5 Digital In2 Digital Out 4 13 
+6 5V Digital In 4 14 
+7 Digital In 
+return 
+Digital In 1 15 
+8 Digital Out 1   
+ 
+X3: RS-232 In 
+1:1 connection 
+ 
+DB9f Function DB9f 
+1   6 
+2 TX  7 
+3 RX  8 
+4   9 
+5 GND   
+ 
+ 
+X4: RS-232 Out 
+1:1 connection 
+ 
+DB9m Function DB9m 
+1   6 
+2 TX  7 
+3 RX  8 
+4   9 
+5 GND   
+ 
+ 
+X5: Power 
+ 
+DC-Plug 2.1 Function 
+Center 12..24 VDC 
+ GND 
+ 
+Connector: DC-Plug coaxial, Center positive standard 
+ 
+ 
+Ensure that the power supply output voltage does not exceed the maximum input 
+voltage of the controller (Umax=26 VDC)! 
+ 
+Wrong polarity of the power supply will damage the controller! 
+ 
+ 
+=== PDF PAGE 9 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 9 - 
+Status Display 
+In normal operation the status display shows the actual board address. If an error occurs, the error 
+number is shown (see command TS – Error-Byte).   
+ 
+Digital / Analog IO : 
+ 
+Digital-Inputs: 
+Number 4  
+Type optoisolated, sourcing  
+Voltage 5..24 VDC  
+Imax <10 mA  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+=== PDF PAGE 10 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 10 - 
+Digital-Outputs: 
+Number 4  
+Type Open-collector  
+Voltage 24 VDC  
+Imax 250 mA per channel 
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+=== PDF PAGE 11 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 11 - 
+Using the outputs: 
+ 
+The ULN-2803 driver features s a continuous load current to 250 mA for each of 
+the drivers, The high-current Darlington arrays are ideally suited for interfacing 
+between low-level logic circuitry and multiple peripheral power 
+loads. The open-collector outputs with integral clamp diodes are capable to drive resistive and 
+inductive loads. 
+ 
+The load must be connected between Output –pin and Out-Supply –pin  
+ 
+Outputs to TTL-level: 
+ 
+Follwing shematic shows a simple adaption to TTL-level.  
+ 
+Pin
+Buchse
+=== PDF PAGE 12 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 12 - 
+Analog-Output: 
+Number 1  
+resolution 8 bit  
+Voltage 0..5 V  
+Imax 2 mA  
+   
+ 
+ 
+Analog-Input: 
+Number 2  
+resolution 8 bit  
+Voltage 0..5 V  
+ 
+ 
+=== PDF PAGE 13 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 13 - 
+ 
+Jumpers: 
+ 
+E1 don’t change 
+ 
+E2
+ Place jumper here only to disable the positive limit switch.  This jumper should be used 
+only in special conditions such as a rotary table that has no mechanical limits of motion. 
+ 
+E3 Place jumper here only to disable the negative limit switch.  This jumper should be used 
+only in special conditions such as a rotary table that has no mechanical limits of motion. 
+ 
+E4 This jumper selects the return signal of the limit switch optoisolators.  If the jumper is placed 
+on the upper two pins, then the 24V motor supply is used (npn-limit function).   
+ 
+If the lower pins are jumpered, the system ground is supplied  (pnp-limit function). 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+pnp-configuration npn-configuration
+=== PDF PAGE 14 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 14 - 
+Motor-Cable: 
+ 
+This is a schematic for a standard cable DB15male Æ DB15female HD  (PNP) 
+ 
+ 
+ 
+ 
+ 
+This is a schematic for a standard cable DB15male Æ DB15female (PNP) 
+ 
+This is a schematic for a standard cable DB15male Æ DB9female.   (PNP) 
+Encoder single ended, with bias resistors for the open inverted inputs (A- B-) and recommended  
+pull-up resistors . 
+ 
+ 
+ 
+Please always use shielded and twisted-pair cables! 
+=== PDF PAGE 15 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 15 - 
+Communications 
+RS-232 Settings 
+ 
+Baudrate 9600 / (19200 / 38400) 
+Bits 8 
+Stopbit 1 
+Parity no 
+Protocol no 
+ 
+ 
+How to communicate  
+ 
+The MoCo series has an internal command interpreter. All data to or from the controller are ASCII-
+strings. A command-string starts with a 2 letter mnemonic and dependent on the command, one or 
+more parameters!  
+Over 50 commands are available for programming the MoCo.  
+ 
+Commands may be executed in various ways: 
+ 
+Single command -- One function executed immediately 
+Compound command -- Multiple functions executed immediately 
+Macro command -- Compound command stored for later execution 
+Sub-commands-- Single-character commands 
+Address-command—Network address selection 
+ 
+Command Termination  
+ 
+For communications to occur,  first an existing board-address must be selected. (see Chapter 
+Address-Selection) .  
+A command must be terminated by the Carriage-Return Char = dec 13 (<CR>) 
+ 
+A <CR>  without any other character, repeats the last command! 
+   
+Reply-Termination 
+All data sent from the MoCo series are ASCII Strings. An answer string  starts with  a command 
+identifier which consists off: 
+the board-address, 
+a one character identifier (return char),  
+the channel-number,   
+a colon, 
+the requested data, 
+the reply termination  CR LF ETX      (dec 13, 10, 3 or  hex D, E,3) 
+ 
+Example:  TP<CR> 
+ 
+  0P0:+000120002 <CR> <LF> <ETX> 
+ the board-adress = 0 
+the identifier (returned 
+char)
+the channel # the requested data 
+=== PDF PAGE 16 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 16 - 
+Single Command 
+A single command is executed immediately after the carriage return is received 
+and will be repeated each time the carriage return is received, until a different command is 
+entered. With this feature, it is very easy to continuously monitor the state of an input by 
+simply holding down the "Enter" key. 
+Both uppercase and lowercase characters are valid, and spaces are allowed. 
+Compound Commands 
+A compound command is a series of single commands separated by commas rather than by a 
+carriage return. In this way, it is possible to string together several commands before terminating with 
+the carriage return. These multiple commands will be executed sequentially. 
+ 
+The syntax for a compound command is: 
+CMD[n], CMD[n], ...,..., (rtn) 
+Once this command is entered, it remains in the buffer until replaced by another command 
+and can be re-executed by transferring a carriage return. Compound commands may contain up to 15 
+single commands. 
+ 
+Example:  
+ma0,ws,mr500<CR>   
+ma0,ws,mr2000,ws,rp10<CR>   
+ 
+Macro Commands 
+ 
+Macros can be a most powerful tool for the programmer. A macro command is a 
+grouping of commands to form a short program, implemented by a macro number. 
+To use macros for programming the MoCo controller, insert an MD (Macro Definition) 
+command as the first instruction in the command string. The syntax for macro commands 
+is: 
+MD(macro#), followed by a compound command string. 
+ 
+Example: MD3,MR1000,WS500,MR-1000,WS,RP5 (rtn) 
+ 
+In this example, MD3 defines macro #3. To call up this macro, just issue the command MC3
+. 
+Macro commands may be stored in any order, but you may prefer to number them sequentially 
+as they are entered, because the system gives no warning if you define (and 
+overwrite) an existing macro. You may wish to do this under many conditions, such as when one 
+macro is called by another. It is sometimes desirable to define a complex 
+motion in one macro and define key parameters such as torque, gain, or velocity, in another 
+macro which is called by the main macro. 
+Macro commands can call another macro, without limit. For instance, MC1 could call 
+MC2, and MC2 could then call MC3 and still be able to return to complete the remainder of 
+MC1. 
+ 
+Example: MD1,MC2,MC3,MC4,MC5,MC6 
+ 
+Macro commands may contain up to 15 single commands. 
+=== PDF PAGE 17 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 17 - 
+Sub Commands  
+Sub-commands may be used at any time. They are most useful for interrogating variables 
+without disturbing an operating program. An example would be a situation where a 
+repetitive motion is in process, such as dispensing adhesive in a pattern. The operator 
+would like to know the status of the command without stopping it. The sub-commands can 
+be used to read the number of iterations in a loop, current system status, position, etc. A 
+single character is also provided for emergency stop action. If a macro is running standard commands 
+are not possible witout interrupting the macros!  
+ 
+Sub-commands are one character commands without any command termination. 
+ 
+character hex-value decimal-value standard-command function 
+blank h20 32  Stops a running macro  
+‘ h27  39 tp returns the actual position 
+? h3f 63 tf returns the actual position-error 
+\ h5c 92 ms returns Byte 1 of the commands TS  
+% h25 35 ts returns the status of the system 6 bytes
+! h21 33 ab stops  motion (all controllers) 
+# h23 35 tc returns the status of digital 
+inputs/outputs 
+ 
+ 
+Control Characters: 
+ 
+ 
+character hex-value decimal-value function 
+CR $E 13 command /reply termination 
+LF $D 10 reply termination 
+ETX $3 3 reply termination 
+CtrlA $1 1 address selection 
+    
+    
+    
+ 
+ 
+Address Selection 
+ 
+Up to 16 controllers can share one serial interface. The address selection is done by the command  
+Ctrl+A + the controller address, defined by command <db>, all others are automatically de-addressed. 
+ 
+Ctrl+A = ASCII table character 1 
+ 
+Note:  After power-up, the controller is not addressed! Send first the address command! 
+  
+Example:     CtrlA5     address Controller #5  
+  tp   query position 
+  5p0:+000300  reply of controller #5 
+   
+CtrlA2     address Controller #2 
+  tp   query position 
+  2p0:+0002300  reply controller #2 
+   
+There is a interesting feature which enables sending commands to all available controllers. 
+The command Ctrl-a+v+ standard command   
+Please do not use this command with reporting commands, the data will be chaotic! 
+ 
+Example: CtrlAV DV2000  defines the velocity of all boards 
+  CtrlAV MR2000  all motors will move 2000 inc relative 
+=== PDF PAGE 18 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 18 - 
+Limit Switch Operation  
+ 
+Limit switch enable/disable 
+ 
+The limit switch operation in MoCo controllers is somewhat complex, in order to give the maximum 
+protection in all circumstances.  The complexity arises due the the extreme variation in conditions that 
+must be protected. 
+ 
+First and foremost is the hardware protection.  Whenever the limit switch is activated that is in the 
+direction of travel, the drive to the motor is disabled within a few nanoseconds after receipt of the 
+signal from the switch.  This gives absolute protection against damage by overtravel and is not 
+affected in any way by software operation. 
+ 
+However, there are applications involving the use of rotary stages where there is no need for limit 
+switch protection and where disabling the motor drive might cause a problem.  For these applications, 
+beginning with the MoCo2006 boards, (S/N 0610-xxx and 0611-xxx) there is now the ability to disable 
+either or both limit switches using jumpers at E2 and E3.  (No jumper = limit switch enabled) 
+ 
+At the same time, the switches are still monitored by the software protection scheme, which is 
+designed to reset the motion target to the actual position whenever either limit switch is activated.  This 
+action prevents continued motion if the limit switch were to be only a momentary activation.  The 
+software protection scheme only tests the state of the limit switches once per millisecond. 
+ 
+Whenever either or both limit switches are disabled by placement of the disable jumpers at E2 and E3, 
+the corresponding software limit should be disabled.  In previous releases, the LN (limit on) and LF 
+(limit off) commands addressed both limit switches.  Both switches are still controlled when the LN and 
+LF commands are given with no following argument, to retain compatibility with previous firmware 
+revisions.  However, it is now also possible to enable or disable the limit switches separately.  LN1/LF1 
+enables/disables only the negative limit switch and LN2/LF2 enables/disables only the positive limit 
+switch. 
+ 
+Even with the limit switches disabled, it is still possible to make use of the negative limit switch as a 
+reference input.  The FE1 (Find edge command, mode 1) command causes motion in the negative 
+direction until the negative limit switch is activated.  Normal move commands will not be stopped at 
+this position, so it is important that only the FE1 command be used to locate the switch position if the 
+intent is to establish a reference position. There is no corresponding use available for the positive limit 
+switch. 
+ 
+After stopping, the FE4 (Find edge command, mode 4) command may be used to move in the positive 
+direction until the limit switch is deactivated.  It is possible to use this process to establish a very 
+repeatable reference position. 
+ 
+When using the negative limit switch input only as a reference switch, the corresponding limit switch 
+disable jumper should be installed, as well as the LF1 command being given. 
+ 
+Switch polarity 
+ 
+The LH and LL commands are provided so that limit switches may be supported, regardless of the 
+active state.  If the switch input is a logic high level when the switch is activated, then the LH (Limit 
+high) command should be used.  Otherwise, use LL (Limit low).   After selecting the active state, the 
+UD (Update) command should be used to save the setup so that it does not have to be repeated for 
+later use. 
+ 
+Please be aware that the UD command saves all parameter setups, so if a gain has been changed for 
+testing, the changed value will now become the value at all subsequent uses, until the gain value is 
+changed and the UD command saves the changed value. 
+ 
+The firmware for Rev. 3.0 and later always report the limit switch state as a “1” when activated, 
+regardless of the LH/LL state. 
+=== PDF PAGE 19 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 19 - 
+ 
+Command Reference 
+ 
+Data formats: 
+I integer (24 bit) 
+ui unsigned integer (24 bit) 
+w word (16bit) 
+b byte (8 bit) 
+ 
+ 
+ 
+Tell Position 
+   
+Description 
+ 
+ 
+ 
+Tell Position reports the absolute position in increments of the 
+encoder. TP may be used to monitor motion during both motor on 
+and motor off status. 
+Parameter no 
+Return Char P 
+Index always 0 
+Return Value I [increments] 
+  
+Example tp 
+                                     0P0:+0000020002 
+  
+ 
+ 
+ 
+Tell Target 
+   
+Description 
+ 
+ 
+ 
+Reports target position in encoder increments. This is the 
+absolute position to which the servo loop will try to drive the motor 
+any time the MN (Motor ON) state is in effect. The target position 
+may be specified directly with the MA (Move 
+Absolute) and several other commands, or indirectly with the MR 
+(Move Relative) command. If the system is in decimal mode, ten 
+digits will be reported with a leading minus sign (-), if the position 
+is less than the position defined as "home."  
+Parameter no 
+Return Char T 
+Index always 0 
+Return Value I [increments] 
+  
+Example tt 
+                                     0T0:+0000020002 
+  
+ 
+tp 
+tt 
+=== PDF PAGE 20 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 20 - 
+ 
+ 
+ 
+Tell Status 
+   
+Description 
+ 
+ 
+ 
+When the TS command is given, the status of the system as well as 
+the motion and limit switches is reported. The answer is a string with 
+7 HexBytes (B_0 .. B_6) 
+If an error occurs (LED Display) the error will be reset by this 
+command! 
+Parameter no 
+Return Char S 
+Index always 0 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+b0  b1..b2  b3 b4  b5 b6 
+ 
+Byte_0:  LM629 Status-Byte 
+ 
+Bit 0 Busy 
+Bit 1 Command error 
+Bit 2 Trajectory complete 
+Bit 3 Index-found 
+Bit 4 Position-limit exceeded 
+Bit 5 Excessive position error 
+Bit 6 Breakpoint-reached 
+Bit 7 Motor off 
+  
+ 
+Byte_1:  Operational Flags 1 
+ 
+Bit 0  
+Bit 1 Wait in process 
+Bit 2 Command error 
+Bit 3 Leading zero suppression active 
+Bit 4 Macro command called 
+Bit 5 Leading zero suppression disabled 
+Bit 6  
+Bit 7 Echo on 
+ 
+ 
+Byte_2:  Operational Flags 2 ( only for factory use) 
+ 
+Bit 0  
+Bit 1  
+Bit 2  
+Bit 3  
+Bit 4  
+Bit 5  
+Bit 6  
+Bit 7  
+ 
+Byte_3:  Motion Flags  
+ 
+Bit 0 Breakpoint in process-flag 
+Bit 1 Polarity of dynamic error 
+Bit 2 Polarity of move direction 1= positive 
+Bit 3 Move Error 
+Bit 4 Polarity of move at start of deceleration 
+Bit 5 Velocity mode 
+Bit 6 Excessive position error 
+Bit 7 LM629 access in process 
+ 
+ 
+ts 
+=== PDF PAGE 21 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 21 - 
+  
+Byte_4:  Limit Switch Status 
+ 
+Bit 0 Limit forward  Switch enable flag (1=active) 
+Bit 1 Limit Switch active state  (1 = high) 
+Bit 2 Find Edge in process  
+Bit 3 Brake on Flag (bn = 1 bf = 0) 
+Bit 4 Find limit switch flag 
+Bit 5 Ref-switch polarity control  
+Bit 6 Limit reverse switch enable flag (1=active) 
+Bit 7  
+ 
+ 
+Byte_5:  Limit Switch inputs 
+ 
+Bit 0 Limit reverse active (1=active) 
+Bit 1 Limit Forward disabled by jumper E2 (disabled =0) 
+Bit 2 Limit forward active (1=active) 
+Bit 3 Limit reverse disabled  by jumper E3 (disabled =0) 
+Bit 4  
+Bit 5  
+Bit 6  
+Bit 7  
+ 
+Byte_6:  Error Codes 
+ 
+01 command not available 
+02 first command character must be a letter 
+03  no command 
+04 negative not allowed 
+05 character following command must be a number 
+06 value too large 
+07 value too small 
+08 continuation character must be a comma 
+09 command buffer overflow 
+0A macro storage overflow 
+ 
+ 
+Hint: For proper sequencing of motion Byte 0 Bit 2 is the most interesting bit. Bit 2 is the 
+trajectory complete interrupt flag, this is set to logic one when the trajectory 
+programmed and initiated by any motion command has been completed. Because 
+of overshoot or a limiting condition (such as commanding the velocity to be higher than 
+the motor can achieve), the motor may not yet be at the final commanded position. 
+It strongly depends on dynamic and control settings, it’s always a good idea to add some 
+time after a move until the system is settled. Polling the position error ( tf) could also help. 
+ 
+Typical values for settling time could be 50-300 ms. 
+ 
+  
+  
+  
+ 
+ 
+ 
+Move Status 
+   
+Description 
+ 
+ 
+ 
+Reports only Byte 0 of the TS command  
+ 
+Parameter no 
+Return Char M 
+Return Value b  
+Index always 1 
+Example ms 
+          0M1:4C  
+  
+ 
+ms 
+=== PDF PAGE 22 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 22 - 
+ 
+ 
+ 
+Tell Following Error 
+   
+Description 
+ 
+ 
+ 
+Reports the difference between the dynamic target and the actual 
+position. During motion, it is normal for the 
+actual position to lag behind the target position by some amount, 
+usually dependent on the programmed velocity. If 
+the velocity is higher than physically possible for the system, or if 
+it has encountered an impediment, the following error will 
+increase. If the obstruction is temporary, the servo action will 
+attempt to restore the error to zero when it is removed. 
+Parameter no 
+Return Char F 
+Index always 0 
+Return Value I [increments] 
+  
+Example tf 
+                                     0F0:+0000000022 
+  
+ 
+ 
+ 
+ 
+Tell Board Address 
+   
+Description 
+ 
+ 
+ 
+Reports the board-adress 
+Parameter no 
+Return Char B 
+Index always 0 
+Return Value number 0.. F 
+  
+Example tb 
+                                     0B0:01 
+  
+ 
+ 
+ 
+Define Board Address 
+   
+Description 
+ 
+ 
+ 
+Defines the board-adress 
+Parameter the address 
+Return Char no 
+Index no 
+Return Value no 
+  
+Example db5 
+  
+tf 
+tb 
+db 
+=== PDF PAGE 23 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 23 - 
+ 
+ 
+ 
+Update 
+   
+Description 
+ 
+ 
+ 
+Stores all parameters like velocity and filter parameters in the 
+non-volatile memory.  
+When the MoCo powers up these parameters will be active! 
+ 
+Parameter no 
+Return Value no 
+  
+Example ud 
+  
+  
+ 
+ 
+ 
+ 
+Define Velocity 
+   
+Description 
+ 
+ 
+ 
+Defines the desired velocity for any movement. Causes the motor 
+to run at velocity n in subsequent motion commands.  
+per second. If the torque load changes on the motor, the 
+controller attempts to maintain the velocity by varying the 
+motor current. The value n may be in the range from 1000 to 
+255,000.q However, the usable range of velocity settings 
+is determined by the number of lines in the encoder and the 
+maximum RPM of the motor in use. Many systems will 
+fall into a range of 50,000 to 250,000 counts/second. 
+ 
+Parameter I  [increments/s] 
+Parameter-Range 0..1 000 000  
+Return Value no 
+  
+Example dv20000 
+  
+  
+ 
+ 
+ 
+ 
+Get Velocity 
+   
+Description 
+ 
+ 
+ 
+Returns the programmed velocity, (defined with command dv) 
+  
+Return Char Y 
+Index always 0 
+Return Value I  [increments/s] 
+  
+Example gv 
+  0Y0:+0000020000 
+  
+ 
+dv 
+gv 
+ud 
+=== PDF PAGE 24 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 24 - 
+ 
+ 
+ 
+Define Acceleration 
+   
+Description 
+ 
+ 
+ 
+Defines the desired acceleration i for any movement. The 
+maximum value is mostly limited through the mechanical system 
+(the inertia of the system) 
+Parameter I [icrements/s 2] 
+Parameter-Range 0..10 000 000  
+Return Value no 
+  
+Example da200000 
+  
+  
+ 
+ 
+ 
+ 
+Get Acceleration 
+   
+Description 
+ 
+ 
+ 
+Returns the programmed acceleration, (defined with command 
+da) 
+  
+Return Char A 
+Index always 0 
+Return Value I [icrements/s 2] 
+  
+Example ga 
+  0L0:+0000200000 
+  
+ 
+da 
+ga 
+=== PDF PAGE 25 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 25 - 
+ 
+  
+ 
+ 
+Define P-Term 
+   
+Description 
+ 
+ 
+ 
+Defines the P-Term of the PID-filter. This command sets the slope 
+of the proportional relationship between the position error and the 
+motor voltage. The higher the gain value is set, the higher is the 
+stiffness of position coupling, so that an small error value causes 
+a proportionally larger motor current driving the motor towards the 
+target. The default gain value is usually stable. The optimum 
+value depends on friction, inertia, motor power, and the resolution 
+of the encoder. It must be determined by the user. If the error 
+reported by an axis after completing its motion is excessive, the 
+gain value may be increased in small increments until the error is 
+within acceptable limits. If the axis becomes unstable and begins 
+to oscillate, the gain must be reduced until the oscillation stops. 
+If the error remains too high, use the di command. 
+ 
+Parameter w 
+Parameter-Range 0..32767 
+Return Value no 
+  
+Example dp800 
+  
+ 
+ 
+ 
+ 
+Get P-Term 
+   
+Description 
+ 
+ 
+ 
+Returns the programmed p-term, (defined with command dp) 
+Return Char G 
+Index always 0 
+Return Value w 
+  
+Example gp 
+  0G0:+0000000800 
+  
+ 
+ 
+ 
+Define I-Term 
+   
+Description 
+ 
+ 
+ 
+Defines the I-Term of the PID-filter.  Sets the gain to be applied to 
+the integral term in the PID algorithm. The primary function of this 
+term is to overcome friction-induced static errors. 
+Note: The I-term has no effect unless the dl command is used to 
+set the limit of output>0 
+ 
+Parameter  w  
+Parameter-Range 0..32767 
+Return Value no 
+  
+Example di200 
+  
+  
+dp 
+di 
+gp 
+=== PDF PAGE 26 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 26 - 
+ 
+ 
+ 
+Get I-Term 
+   
+Description 
+ 
+ 
+ 
+Returns the programmed integral-term, (defined with command 
+di) 
+  
+Return Char I 
+Index 0 
+Return Value w  
+  
+Example gi 
+  0I0:+0000000400 
+  
+ 
+ 
+ 
+Define D-Term 
+   
+Description 
+ 
+ 
+ 
+Defines the D-Term of the PID-filter.  Sets the gain to be applied 
+to the derivative term in the PID algorithm.  
+ 
+Parameter  w  
+Parameter-Range 0..32767 
+Return Value no 
+  
+Example dd200 
+  
+  
+ 
+ 
+ 
+ 
+Get D-Term 
+   
+Description 
+ 
+ 
+ 
+Returns the programmed derivative-term, (defined with command 
+dd) 
+  
+Return Char D 
+Index 0 
+Return Value w  
+  
+Example gd 
+  0D0:+0000000400 
+  
+ 
+gi 
+dd 
+gd 
+=== PDF PAGE 27 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 27 - 
+ 
+ 
+ 
+ 
+Define Integral-limit 
+   
+Description 
+ 
+ 
+ 
+Defines the integral-limit of the PID-filter.  
+ 
+Parameter n  
+Parameter-Range 0..32767 
+Return Value no 
+  
+Example dl2000 
+  
+  
+ 
+ 
+ 
+ 
+Get Integral-Limit 
+   
+Description 
+ 
+ 
+ 
+Returns the actual programmed integral-limit, (defined with 
+command dl) 
+  
+Return Char L 
+Return Value w 
+Index always 0 
+Example gl 
+  0L0:+0000002000 
+  
+ 
+dl 
+gl 
+=== PDF PAGE 28 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 28 - 
+ 
+ 
+ 
+ 
+Define Following-Error 
+   
+Description 
+ 
+ 
+ 
+Sets the maximum allowable error between the dynamic target 
+and the actual position. May be changed as often as desired to  
+provide maximum protection to the system. 
+The following error can be monitored with the TF command.  
+For maximum system safety, use the DE command to limit  
+following error to a value slightly above that required for normal 
+operation. 
+Whenever the following error exceeds the set limit, an internal MF 
+command is given, which will prevent the use of any motion 
+commands until the MoCo is reset or until an MN command is 
+given. 
+Parameter w  
+Parameter-Range 0..32767 
+Return Value no 
+  
+Example de2000 
+  
+ 
+ 
+ 
+ 
+Define Baud-Rate 
+   
+Description 
+ 
+ 
+ 
+The MoCo is able to communicate with 3 standard Baud-Rates 
+0 : 9600 
+1: 19200 
+2: 38400 
+ 
+Caution: Parameter is not storable, after reset  9600 is always 
+active!! 
+ 
+Parameter b 
+Parameter-Range 0..2 
+Return Value no 
+  
+Example br0    ; 9600 is active 
+  
+  
+  
+ 
+ 
+ 
+Reset Controller 
+   
+Description 
+ 
+ 
+ 
+Restarts the internal firmware operation as if from a power off 
+condition. All default values are restored. If Macro 0 exists, it will 
+be executed. 
+  
+Parameter no  
+Return Value no 
+  
+  
+Example rt  
+  
+de 
+rt 
+br 
+=== PDF PAGE 29 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 29 - 
+ 
+ 
+ 
+ 
+Echo Off 
+   
+Description 
+ 
+ 
+ 
+Disables echoing. When control is from a computer program, it is 
+sometimes easier to program if there is no 
+echo, unless the program uses it for verification of successful 
+transmission. 
+  
+Parameter no  
+Return Value no 
+  
+Example ef  
+  
+ 
+ 
+ 
+ 
+ 
+Echo On 
+   
+Description 
+ 
+ 
+ 
+Enables echoing of command characters as they are entered. 
+Each character received is echoed unchanged. 
+This is a very useful feature when the MoCo is being controlled 
+manually from a terminal.. 
+  
+Parameter no  
+Return Value no 
+  
+Example en  
+  
+ 
+ 
+ 
+ 
+Motor On 
+   
+Description 
+ 
+ 
+ 
+This is the normal system control mode, where the MoCo controls 
+the axis position continuously. Any deviation between actual and 
+target position causes the motor to be driven toward the target,  
+using the previously defined values of velocity, acceleration and  
+PID filter parameters. When the MN command is given, the 
+equivalent of an AB command  is also executed, to prevent 
+unwanted motion that could result from motion during an MF 
+condition or from other sources.  For example, 
+whenever the position loop error exceeds the maximum  
+setting as defined by the DE command, the motor loop is opened 
+and  it is necessary to give the MN command to regain normal 
+control..All motion commands given after an excess error fault 
+occurs will be ignored until the MoCo has been reset or until an 
+MN command is given 
+  
+Parameter no  
+Return Value no 
+  
+Example mn  
+en 
+ef 
+mn 
+=== PDF PAGE 30 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 30 - 
+ 
+ 
+ 
+ 
+Motor Off 
+   
+Description 
+ 
+ 
+ 
+When this command is issued, the motor is no longer held in 
+position control and may be moved freely. The MF command is 
+used to prevent unwanted movement or to allow for manual 
+positioning of the unit. However, the motor position is always  
+monitored, even in the MF status, and may be reported by the  
+TP command. 
+ 
+  
+Parameter no  
+Return Value no 
+  
+Example mf  
+  
+ 
+ 
+ 
+ 
+Abort Motion 
+   
+Description 
+ 
+ 
+ 
+This command stops a motion ! The target position is changed to 
+be equal to the present position.  
+n=0 stop abrupt 
+n=1 deccelerated stop 
+  
+Parameter n  
+Parameter-Range 0 ..1  
+Return Value no 
+  
+Example ab1 decelerated stop 
+  
+mf 
+ab 
+=== PDF PAGE 31 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 31 - 
+ 
+ 
+ 
+ 
+Move Relative 
+   
+Description 
+ 
+ 
+ 
+This command generates a motion of relative distance of n counts 
+in the specified direction from the actual 
+motor position. i may be either a positive or negative number up 
+to a total target position +/-1 073 741 843 
+ 
+  
+Parameter I 
+Parameter-Range depends on the absolute target, should not exceed the maximum 
+position +/-1 073 741 843 ! 
+Return Value no 
+  
+Example mr5000  
+  
+ 
+ 
+ 
+ 
+Move Absolute 
+   
+Description 
+ 
+ 
+ 
+This command generates a motion to the absolute position i. The 
+zero, or home position, may be defined by the DH (Define Home) 
+statement. If not otherwise defined, it is the position where the 
+controller was when powered 
+on. 
+ 
+  
+Parameter I 
+Parameter-Range +/-1 073 741 843  
+Return Value no 
+  
+Example ma2000  
+  
+ 
+ 
+ 
+ 
+Repeat 
+   
+Description 
+ 
+ 
+ 
+This command causes the command string to repeat I+1 times. If i is 
+not specified, the commands are repeated 
+65,535 times. The repeat loop may be interrupted by transferring 
+any character. This character may not be the first character of a new 
+command because it will be discarded. (To repeat forever, use two 
+RP commands in sequence.) 
+  
+Parameter n  
+Parameter-Range 0..65535 
+Return Value no 
+  
+Example ma0,ws,ma2000,ws,rp99  (performs 100 iterations) 
+  
+ 
+mr 
+ma 
+rp 
+=== PDF PAGE 32 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 32 - 
+ 
+ 
+ 
+Find Edge 
+   
+Description 
+ 
+ 
+ 
+This command is used to initialize the system at a given position. 
+The motor runs at a programmed speed until a change of state 
+occurs on the limit-input line. The  
+directionExample: FE0 (rtn) : Causes motor to move in a positive 
+direction until the E2 input is activated.  
+FE1 (rtn) : Causes motor to move in a negative direction until the 
+E1 input is activated.  
+FE4 (rtn) : Causes motor to move in a positive direction until the 
+E1 input is deactivated.  
+ 
+  
+Parameter n  
+Parameter-Range 0,1,4 
+Return Value no 
+  
+Example fe1 seach for E1 in negative direction 
+  
+ 
+ 
+ 
+ 
+Find Index 
+   
+Description 
+ 
+ 
+ 
+This command is used to define a very exact homing-position. 
+The motor runs at the programmed speed until the index of the 
+encoder occurs.  
+Bit 3 indicates if the index occurs  (status & $08) 
+Normal rotary encoders have one index per motor revolution! 
+ 
+  
+Parameter  
+Parameter-Range  
+Return Value no 
+  
+Example fi  
+  
+ 
+ 
+ 
+ 
+Define Home 
+   
+Description 
+ 
+ 
+ 
+Defines the current motor position as zero position (home 
+position). 
+  
+Parameter no 
+Return Value no 
+  
+Example dh  
+  
+ 
+dh 
+fe 
+fi 
+=== PDF PAGE 33 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 33 - 
+ 
+ 
+ 
+Go Home 
+   
+Description 
+ 
+ 
+ 
+The Go Home command causes the motor to move to absolute 
+zero position. Equivalent to an MA0 (Move 
+Absolute axis a to zero) command. 
+  
+Parameter no 
+Return Value no 
+  
+Example gh  
+  
+ 
+ 
+ 
+ 
+Wait Stop 
+   
+Description 
+ 
+ 
+ 
+Wait until axis has reached the end of the actual movement, and 
+waits another n  milliseconds before the execution of the next 
+command.   
+Without parameter the wait-time is 1000 ms! 
+  
+Parameter n  
+Parameter-Range 0..65535 
+Return Value no 
+  
+Example   
+ mr2000,ws500,ma0 
+ 
+ 
+ 
+ 
+Macro Definition 
+   
+Description 
+ 
+ 
+ 
+This command is used to define a new macro command. Any 
+duplication of numbers will simply result in the 
+loss of any previously defined macro using that number. To define 
+a macro, choose any number in the allowable 
+range for the new macro and enter MD followed by this number 
+and a comma before entering the function you wish the macro to 
+perform, in the normal manner. 
+ 
+Macro 0 is an autostart macro, executed after booting the 
+controller 
+  
+Parameter macro-number  + command-string 
+Parameter-Range 0..14 (macro-number) 
+Return Value no 
+  
+Example   
+ md1,ma0,ws,ma2000,ws 
+  
+ 
+gh 
+ws 
+md 
+=== PDF PAGE 34 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 34 - 
+ 
+ 
+ 
+ 
+Macro Call 
+   
+Description 
+ 
+ 
+ 
+This command may be used to implement a previously defined 
+macro command. If there is no macro defined 
+by the number n, no action will be taken. 
+ 
+A running macro can be stopped by sending the <space>  
+dec=32  hex =$20 
+  
+Parameter n, macro-number 
+Parameter-Range 0.14 
+Return Value no 
+  
+Example   
+ mc1 
+  
+ 
+ 
+ 
+ 
+ 
+Tell Macro 
+   
+Description 
+ 
+ 
+ 
+Displays all previously stored macro commands. If n = 0 or, if n is 
+not specified, all macros will be displayed. 
+Since macros may be defined in any sequence, the TM command 
+is useful for confirming the existence of, as well as displays all 
+previously stored macro commands. If n = 0 or, if n is not 
+specified, all macros will be displayed. 
+ Since macros may be defined in any sequence, the TM command 
+is useful for confirming the existence of, as well as 
+Parameter n, macro-number 
+ 0..14 
+Return Value the contents of the macro(s) 
+  
+Example   
+ tm1 
+   mc1,mr555,ws,gh 
+ 
+ 
+ 
+ 
+ 
+Reset Macro 
+   
+Description 
+ 
+ 
+ 
+Resets macro-memory 
+  
+Parameter 0..14macro-number) 
+  
+Example   
+ rm  reset all macros 
+ rm 1 reset only macro 1 
+  
+ 
+mc 
+tm 
+rm 
+=== PDF PAGE 35 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 35 - 
+ 
+ 
+Set Analog Output 
+   
+Description 
+ 
+ 
+ 
+Sets the analog output  to a value. The output is a 0 to 5 V 8 bit 
+output. One bit is 19.5  mV 
+Parameter b  -> value of the output 8 bit 
+ 0..255 
+  
+  
+Example so255 
+                                     the output is 5 V 
+  
+ 
+ 
+ 
+Increment Analog Output 
+   
+Description 
+ 
+ 
+ 
+Increments the analog output . The output is a 0 to 5 V 8 bit 
+output. One bit is 19.5  mV. 
+ 
+Parameter   I -> incremental value  
+ -255..255 
+  
+  
+Example io2   ; new analog value = old value + 2 
+ mc2,io1,ws1,rp   ; generates a analog sawtooth                               
+  
+ 
+ 
+ 
+ 
+ 
+Tell Analog Output 
+   
+Description 
+ 
+ 
+ 
+Returns the actual value of the analog output 
+Parameter no 
+Return Char o 
+Index always 0 
+Return Value b [0..255] 
+Example to 
+                                     0o0:255 
+  
+ 
+to 
+so 
+io 
+=== PDF PAGE 36 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 36 - 
+ 
+ 
+ 
+Tell Analog Input 
+   
+Description 
+ 
+ 
+ 
+Returns the current value of the analog inputs 1 and 2 
+Parameter b channel [0 ..2] 
+0     = report both inputs 
+1..2 = reports channel # 
+Return Char A 
+Index  b [0..2] 
+Return Value n  m -> value of the analog-inputs 8 bit 
+n = channel 1 
+m = channel 2 
+ 0..255 
+  
+Example ta 
+                               0A0: 127 230 
+ ta1 
+                                0A1 :127 
+ ta2 
+                                0A2 :230 
+ 
+ 
+ 
+ 
+ 
+Tell Channel 
+   
+Description 
+ 
+ 
+ 
+Returns the current status of the digital-inputs and outputs. 
+Parameter b   [ 0..4]    
+0  =  report all outputs and inputs 
+1..4  =  report input-channel # 
+Return Char H 
+Index 0 ..4 
+Return Value n  m -> value of the inputs /outputs 8 bit 
+n = outputs 
+m = inputs 
+ 
+  
+Example tc 
+                           0H0: 0  255   ; all outputs and inputs not active 
+tc1 
+                          0H1: 1   ; reports channel 1 
+ 
+ 
+  
+ 
+tc 
+ta 
+=== PDF PAGE 37 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 37 - 
+ 
+ 
+ 
+ 
+Channel oFf 
+   
+Description 
+ 
+ 
+ 
+Reset  digital output(s) 
+Parameter b,     0..4 
+ 0      = all outputs 
+1..4  = only channel # 
+Return Value no 
+  
+Example cf 0  or cf   resets all 4 digital outputs 
+ cf1  resets channel 1 
+  
+ 
+ 
+ 
+ 
+Channel oN 
+   
+Description 
+ 
+ 
+ 
+Set digital output (s) 
+Parameter b,     0..4 
+ 0      = all outputs 
+1..4  =only channel # 
+  
+Return Value no 
+  
+Example cn0 or cn   sets all 4 digital outputs 
+ cn1  sets channel 1 
+  
+ 
+ 
+ 
+Wait oN 
+   
+Description 
+ 
+ 
+ 
+Stops Command Execution until Input Channel on 
+Parameter b   [ 1..4]    
+1..4  =  input-channel # 
+Return Char  
+Index 1 ..4 
+Return Value no 
+  
+Example wn1,ma1000 
+  
+ 
+cf 
+cn 
+wn 
+=== PDF PAGE 38 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 38 - 
+ 
+ 
+ 
+Wait oFf 
+   
+Description 
+ 
+ 
+ 
+Stops Command Execution until Input Channel off 
+Parameter b   [ 1..4]    
+1..4  =  input-channel # 
+Return Char  
+Index 1 ..4 
+Return Value no 
+  
+Example wn1,ma1000,wf1,ma0 
+                       
+ 
+  
+ 
+ 
+ 
+ 
+eXecute if oN 
+   
+Description 
+ 
+ 
+ 
+Executes Commands if Input-Channel on 
+Parameter b   [ 1..4]    
+1..4  =  input-channel # 
+Return Char  
+Index 1 ..4 
+Return Value no 
+  
+Example xn1,mr555,ws10     move if Input1 = on 
+xn1,xn2,mr599,ws10      move if Input 1 & 2 = on 
+ 
+ 
+ 
+ 
+ 
+eXecute if oFf 
+   
+Description 
+ 
+ 
+ 
+Executes Commands if Input-Channel off 
+Parameter b   [ 1..4]    
+1..4  =  input-channel # 
+Return Char  
+Index 1 ..4 
+Return Value no 
+  
+Example xn1,mr555,ws10     move if Input1 = on 
+xn1,xn2,mr599,ws10      move if Input 1 & 2 = on 
+xn1,xn2,xf3,mr599,ws10      move if In 1 & 2  = on & In 3 = off 
+ 
+wf 
+xn 
+xf 
+=== PDF PAGE 39 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 39 - 
+Trigger Functions: 
+The Moco controller is able to generate position synchrone trigger outputs. This helps to synchonize 
+lasers or other measurement devices.  
+Following limitations have to be considered if using this option: 
+ 
+• Multible triggers are limited to a maximum  frequency of  500 Hz! 
+• The accuracy of the trigger output is directly dependent on the actual velocity . There is a 
+time delay of about 1 ms  (reaction time of a interrupt including processing time to link to the 
+output) 
+ 
+ÆÆÆÆ the error is app. 1/1000 of the actual velocity in counts/sec 
+ 
+ 
+Example: The application needs every 5 µm a trigger signal. The first trigger should occur 
+  at absolute position  10 µm. 
+  1µm = 2 encoder-increments 
+  The output for the trigger is Out 1, the pulswidth = 2.5 µsec 
+   
+  actual position is : 0  
+  sb1 
+  pw0   
+  bd20 
+  bi10 
+  mr500 
+ 
+Maximum speed should be: 500 [1/s] x 10 [increments]  = 5000 [Increments/s] 
+ 
+ 
+ 
+ 
+SetBreakpoint port 
+   
+Description 
+ 
+ 
+ 
+Assignes the trigger-output  port (digital output 1..4) 
+Parameter b,     1..4 
+ 1..4  = port number 
+  
+Return Value no 
+  
+Example sb1  ; defines output 1 as trigger output 
+  
+  
+ 
+ 
+ 
+Breakpoint Define 
+   
+Description 
+ 
+ 
+ 
+Defines the absolute position for the first breakpoint 
+Please note, the stage should be a little before the first trigger! 
+It also sets bit 0 of the 4th byte reported in TS 
+Parameter I 
+ +/-1 073 741 843  
+  
+Return Value no 
+  
+Example ma19900,sb1,bi100,bd20000,ma30000 
+ first trigger at position 20000, next every 100 increments 
+  
+sb 
+bd 
+=== PDF PAGE 40 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 40 - 
+ 
+ 
+ 
+define Breakpoint  Increment 
+   
+Description 
+ 
+ 
+ 
+Defines the relative distance (breakpoint increment) between the 
+trigger-points. 
+ 
+Parameter I 
+ +/-1 073 741 843  
+  
+Return Value no 
+  
+Example ma19900,ws,sb1,bi100,bd20000,ma30000 
+ first trigger at position 20000, next every 100 increments 
+  
+ ma20100,ws,sb1,bi-100,bd20000,ma0 
+ first trigger at position 20000, next every -100 increments 
+ 
+ 
+ 
+ 
+define Pulse Width 
+   
+Description 
+ 
+ 
+ 
+Defines the puls-width of the trigger signal 
+0= 2.5µsec 
+1..255 = 1..255 ms 
+Parameter b 
+ 0..255 
+  
+Return Value no 
+  
+Example pw1   ; puls width = 1ms 
+  
+  
+  
+  
+ 
+ 
+bi 
+pw 
+=== PDF PAGE 41 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 41 - 
+Some examples: 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+ 
+  
+DV10000 Slow velocity to search the E1 switch 
+FE1 search reverse direction 
+WS Wait until after move complete 1000 ms 
+DV500 very slow velocity  
+FE4 search for toggle of the E1 switch in forward direction 
+WS Wait until after move-complete 1000 ms 
+DH Define-home, actual position = 0  
+   
+  
+  
+ 
+ 
+ 
+   
+ 
+ 
+ 
+  
+MA0 Move absolute to 0 
+WS500 Wait until after move-complete 500 ms 
+MR500 Move relative 500 increments 
+WS Wait until after move-complete 1000 ms 
+RP49 repeat the line 50 times 
+  
+   
+Homing
+Demo 
+=== PDF PAGE 42 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 42 - 
+ 
+ 
+ 
+ 
+ 
+Macro 2:   This macro calls other macros  
+ 
+MD2, EM+0000000010,EM+0000000011,EM+0000000012,MA,WS+0000000500,RP 
+ 
+ 
+Macro 10:  motor moves 20000 increments relative, after trajectory complete, output 1 goes high 
+for 200 ms, the output goes low 
+ 
+MD10,MR+0000020000,WS+0000000001,CN+0000000001,WA+0000000200,CF+0000000001,WS+0
+000000001 
+ 
+Macro 11:   motor moves 500 increments relative, after trajectory complete wait for 100 ms , 
+repeats 11 times this macro 
+ 
+MD11, MR+0000000500,WS+0000000100,RP+0000000010 
+ 
+Macro 12: same like macro 11 in negative direction 
+ 
+MD12, MR-0000000500,WS+0000000100,RP+0000000005 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Some more  macros 
+=== PDF PAGE 43 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 43 - 
+Trouble Shooting: 
+ 
+No contact with the controller: 
+ 
+• interface settings correct? 
+• RS232 connection correct ? 
+• Controller addressed? 
+• 2 or more controllers with same address? 
+ 
+ 
+ 
+Motor without power or do not move: 
+ 
+• motor connected ? 
+• motor-off due excessive positioning error ? 
+• after booting the controller motor always off 
+• limit switch active in direction of movement? 
+ 
+ 
+Excessive Positioning Error: 
+ 
+• motor not or wrong connected  
+• encoder not or wrong connected 
+• speed too high 
+• acceleration too high 
+• torque / force too high 
+ 
+ 
+ 
+=== PDF PAGE 44 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 44 - 
+Command Short Form 
+ 
+read-command reply-char set-command 
+TS  Tell Status S:  
+MS  Move Status M: 
+ 
+ 
+HE Print list of commands   
+TE Tell Error (distance from target) E:  
+TP Tell Position P:  
+TT Tell Target T:  
+TF Tell Following error (distance between 
+position and dynamic target) 
+F:  
+TD Tell Dynamic target N:  
+TV Tell actual Velocity V:  
+GV GetVelocity Y: DV Define Velocity 
+GA GetAcceleration A: DA Define Acceleration 
+GP Get Proportional gain G: DP  Define Proportional gain 
+GI  Get Integral gain I: DI Define Integral gain 
+GD Get Derivative gain D: DD Define Derivative gain 
+GL Get Integral-Limit L: DL  Define integral Limit 
+  DE Define maximum following Error 
+VE Display VErsion number   
+TI Tell the Iteration number X:  
+TB Tell Board address B: DB Define board-adress 
+CS Perform self-test checksum C:  
+  LN Limit switch operation on 
+  LF Limit switch operation off 
+  LL Limits switches active low 
+  LH Limit switches active high 
+   
+  UD  Update 
+  DM Input and output in Decimal format 
+  HM Input and output in Hex format 
+  RT Reset all parameters to default and do 
+power-up start 
+  EF Turn off echo to RS-232 port 
+  EN Turn on echo to RS-232 port 
+   
+  AB Abort Motion 
+  MN Motor On 
+  MF Motor off 
+  WA Wait specified time 
+  MR Move Relative 
+  MA Move Absolute 
+  DH Define Home 
+  GH Go Home 
+  RP Repeat from beginning of line 
+  WS Wait until end of trajectory 
+  FE Find Edge 
+  FI Find Index 
+   
+TM Tell Macro (1..31) 
+TZ Tell Macro Zero 
+ MD Macro Definition 
+  MC Macro Command  (or EM) 
+  RM Reset Macro 
+  RZ Reset Macro 0 
+TO Tell Analog Output O SO Set AnalogOutput 
+TA Tell Analog Input A  
+TC Tell Channel H CF Cannel Off 
+  CN Cannel oN 
+   
+ 
+=== PDF PAGE 45 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 45 - 
+Factory Settings : 
+DV Define Velocity  
+DA Define Acceleration  
+DP  Define Proportional gain  
+DI Define Integral gain  
+DD Define Derivative gain  
+DL  Define integral Limit  
+DE Define maximum following Error  
+  
+EN Turn on echo to RS-232 port  
+  
+  
+  
+ 
+=== PDF PAGE 46 ===
+ 
+ 
+ 
+ 
+MOCO series 
+  - 46 - 
+  
